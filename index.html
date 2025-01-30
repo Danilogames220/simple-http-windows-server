@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoGwAZKBsA/ygbAIAAAAAAAAAAACgbAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgbAIAoGwC/AAAAACgbAIAoGwC/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKBsA5igbAJgoGwDNKBsAmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgbAIAoGwCAKBsA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoGwDXKBsAMgAAAABNTU0AKBsA4SgbAKJNTU0ATU1NAE1NTQAAAAAAKBsAzSgbADIAAAAAAAAAAAAAAAAAAAAAKBsA5igbAIAAAAAATU1NACgbAPAoGwDRTU1NAE1NTQBNTU0AAAAAACgbAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoGwCAAAAAAE1NTQAoGwCAKBsAgE1NTQBNTU0ATU1NACgbAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKBsAvygbAIBNTU0AKBsAgCgbAIBNTU0ATU1NACgbAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoGwC/KBsAvygbAIAoGwCAKBsAMigbAP9NTU0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgbAP8oGwDZKBsAoCgbAM1NTU0ATU1NAE1NTQBNTU0ATU1NAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE1NTQBNTU0AKBsA7CgbAKBNTU0ATU1NAE1NTQBNTU0ATU1NAE1NTQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABNTU0FTU1NACgbAM8oGwCgTU1NACgbAP8oGwCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgbAJgoGwD2KBsAoCgbAP8AAAAAKBsA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATU1NACgbAOYoGwC/AAAAAAAAAAAAAAAAKBsAgCgbAJgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgbAIAoGwCYKBsAmCgbADIoGwCAKBsAvygbAIAoGwDNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgbAOYoGwDNKBsAgCgbAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA438AAPJ/AAD4fwAA+P8AAMzzAADM9wAA7O8AAOTfAADwPwAA+H8AAPz/AAD0nwAA+F8AAPOfAADgHwAA+H8AAA==" rel="icon" type="image/x-icon" />
+    <title>web server gud</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+        body{
+            background-color: rgb(160, 255, 122);
+        }
+        #title{
+            margin-top: 1%;
+            color: white;
+            font-family: sans-serif;
+            font-weight: 900;
+            font-size: 50px;
+            text-align: center;
+        }
+
+        #main{
+            border-radius: 25px;
+            background-color: white;
+            padding: 0% 2%;
+            padding-bottom: 100px;
+            margin: 0 10%;
+        }
+
+        .text{
+            font-size: 20px;
+            font-weight: 900;
+            font-family: 'roboto';
+            margin: 10px 10px;
+            padding-top: 10px;
+            color: rgb(47, 84, 33);
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">sup</h1>
+    <div id="main">
+        <p class="text">hello person, welcome to me crap site :)</p>
+    </div>
+    <!--<button onclick="sendMessage('message')">send message to backend</button>-->
+    <script>
+        function sendMessage(message){
+            fetch('http://192.168.1.3:21842/:21842', {
+                method: 'POST',
+                headers: {'Content-Type': 'text/plain'},
+                body: message + ';'
+            })
+        }
+    </script>
+</body>
+</html>

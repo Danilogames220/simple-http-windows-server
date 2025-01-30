@@ -1,0 +1,80 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <winsock2.h>
+#include "renderfile.h"
+
+int server;
+
+void initServer(void);
+
+int main(void) {
+	WSADATA wsaData;
+    if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
+    	printf("WSAStartup failed.\n");
+        return 1;
+   	}
+	//------------------------------------server stuff begins here
+
+	initServer();
+
+	int client;
+
+	while (1) {
+		char buffer[1024];
+		//char * index = renderFile("index.html");
+		//char *thing = "HTTP/1.0 200 OK\r\nContent-Type: text/html\r\n\r\n  \r\n";
+
+		char *httpHeader = "HTTP/1.0 200 OK\r\nContent-Type: text/html\r\n\r\n<h1>aaa</h1>\r\n";
+
+		//strcat(httpHeader, "<h1>aaa</h1>");
+		//strcat(httpHeader, "\r\n");
+
+		client = accept(server, NULL, NULL);
+
+		recv(client, buffer, 1024, 0);
+		printf("\n%s\n", buffer);
+		send(client, httpHeader, 2000, 0);
+		
+		
+		/*if (strstr(buffer, "message")) {
+			printf("the frontend sended a message\n");
+		}*/
+		if (strstr(buffer, "POST")) { //extract message from buffer
+			char *messageStart = strstr(buffer, "\r\n\r\n") + 4;
+
+			char *messageEnd = strchr(messageStart, ';');
+			if (messageEnd) {
+                *messageEnd = '\0'; //remove the semicolon and whatever is after it
+            }
+			
+			printf("Message from frontend: %s\n", messageStart);
+		}
+		closesocket(client);
+		//free(index);
+
+	}
+	closesocket(server);
+	
+	
+	return 0;
+	WSACleanup();
+}
+
+void initServer(void) {
+	const int port = 21842;
+	server = socket(AF_INET, SOCK_STREAM, 0); 
+
+	struct sockaddr_in serverAddress;
+	serverAddress.sin_family = AF_INET;
+	serverAddress.sin_port = htons(21842);
+	serverAddress.sin_addr.s_addr = INADDR_ANY;
+
+	bind(server, (struct sockaddr *) &serverAddress, sizeof(serverAddress));
+
+	listen(server, 5);
+
+	printf("> server workin' on localhost, port:%d\n", port);
+	printf("> btw http://localhost:%d/ cuz ik u forgot about is :)\n\n", port);
+
+}
