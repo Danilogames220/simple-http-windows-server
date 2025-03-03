@@ -1,5 +1,5 @@
 # simple-http-windows-server
-old project made in 2024
+old project made in early 2024
 
   While learning about sockets, i tried coding my own http server to understand how sockets work and how to use them.
 The code is very simple and dosen't have much error handling, since i wanted to focus on the core elements that make the code work.
